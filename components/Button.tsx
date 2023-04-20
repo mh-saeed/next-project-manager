@@ -1,5 +1,4 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { type } from "os";
 import { FC } from "react";
 
 const buttonClasses = cva(
@@ -21,7 +20,6 @@ const buttonClasses = cva(
           "border-transparent",
           "hover:bg-violet-600",
         ],
-
         secondary: [
           "bg-white",
           "text-black",
@@ -46,19 +44,10 @@ const buttonClasses = cva(
   }
 );
 
-// type button = {
-//   children: any;
-//   intent: any;
-//   size: any;
-//   className: any;
-//   props: any;
-// };
-
 export interface ButtonProps
   extends React.HTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonClasses> {}
 
-// const Button = ({ children, intent, size, className, ...props }:button) => {
 const Button: FC<ButtonProps> = ({
   children,
   intent,
