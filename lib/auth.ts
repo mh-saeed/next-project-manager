@@ -1,0 +1,29 @@
+import bcrypt from "bcrypt";
+import { SignJWT, jwtVerify } from "jose";
+
+export const hashPassword = (password: any) => bcrypt.hash(password, 10);
+
+export const comparePassword = (plainTextPassword: any, hashedPassword: any) =>
+  bcrypt.compare(plainTextPassword, hashedPassword);
+
+export const createJWT = (user: any) => {
+  // return jwt.sign({ id: user.id }, 'cookies')
+  const iat = Math.floor(Date.now() / 1000);
+  const exp = iat + 60 * 60 * 24 * 7;
+
+  return new SignJWT({ payload: { id: user.id, email: user.email } })
+    .setProtectedHeader({ alg: "HS256", typ: "JWT" })
+    .setExpirationTime(exp)
+    .setIssuedAt(iat)
+    .setNotBefore(iat)
+    .sign(new TextEncoder().encode(process.env.JWT_SECRET));
+};
+
+export const validateJWT = async (jwt: any) => {
+  const { payload } = await jwtVerify(
+    jwt,
+    new TextEncoder().encode(process.env.JWT_SECRET)
+  );
+
+  return payload.payload as any;
+};
