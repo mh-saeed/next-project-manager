@@ -4,7 +4,7 @@ import { db } from "./db";
 
 export const hashPassword = (password: any) => bcrypt.hash(password, 10);
 
-export const comparePassword = (plainTextPassword: any, hashedPassword: any) =>
+export const comparePasswords = (plainTextPassword: any, hashedPassword: any) =>
   bcrypt.compare(plainTextPassword, hashedPassword);
 
 // Create a JWT:
