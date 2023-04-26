@@ -33,7 +33,7 @@ export default async function middleware(req: any, res: any) {
     return NextResponse.redirect(req.nextUrl);
   }
 
-  console.log(jwt)
+  // console.log(jwt)
 
   try {
     await verifyJWT(jwt.value);
