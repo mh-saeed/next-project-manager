@@ -1,9 +1,9 @@
-import { delay } from "@/lib/async";
+// import { delay } from "@/lib/async";
 import Greeting from "@/components/Greeting";
 import GreetingsSkeleton from "@/components/GreetingsSkeleton";
 import ProjectCard from "@/components/ProjectCard";
-// import TaskCard from "@/components/TaskCard";
-// import NewProject from "@/components/NewProject";
+import TaskCard from "@/components/TaskCard";
+import NewProject from "@/components/NewProject";
 import { getUserFromCookie } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { cookies } from "next/headers";
@@ -38,6 +38,9 @@ export default async function Page() {
           </Suspense>
         </div>
         <div className="flex flex-2 grow items-center flex-wrap mt-3 -m-3 ">
+          <div className="w-1/3 p-3">
+            <NewProject />
+          </div>
           {projects.map((project) => (
             <div className="w-1/3 p-3" key={project.id}>
               <Link href={`/project/${project.id}`}>
@@ -45,10 +48,11 @@ export default async function Page() {
               </Link>
             </div>
           ))}
-          <div className="w-1/3 p-3">{/* <NewProject /> */}</div>
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
-          <div className="w-full">{/* <TaskCard /> */}</div>
+          <div className="w-full">
+            <TaskCard />
+          </div>
         </div>
       </div>
     </div>
