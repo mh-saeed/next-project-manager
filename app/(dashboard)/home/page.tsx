@@ -34,6 +34,7 @@ export default async function Page() {
       <div className=" h-full items-stretch justify-center min-h-[content]">
         <div className="flex-1 grow flex">
           <Suspense fallback={<GreetingsSkeleton />}>
+            {/* @ts-expect-error Server Component */}
             <Greeting />
           </Suspense>
         </div>
@@ -51,6 +52,7 @@ export default async function Page() {
         </div>
         <div className="mt-6 flex-2 grow w-full flex">
           <div className="w-full">
+            {/* @ts-expect-error Server Component */}
             <TaskCard />
           </div>
         </div>
