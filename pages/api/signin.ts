@@ -27,6 +27,7 @@ export default async function signin(
 
       res.setHeader(
         "Set-Cookie",
+        /* @ts-expect-error */
         serialize(process.env.COOKIE_NAME, jwt, {
           httpOnly: true,
           path: "/",

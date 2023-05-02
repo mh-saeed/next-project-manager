@@ -137,6 +137,7 @@ const AuthForm = ({ mode }: { mode: "register" | "signin" }) => {
               </span>
             </div>
             <div>
+              {/* @ts-expect-error Server Component */}
               <Button type="submit" intent="secondary">
                 {content.buttonText}
               </Button>
